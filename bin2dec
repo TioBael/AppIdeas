@@ -1,0 +1,33 @@
+//Incomplete
+import java.util.*;
+
+
+class bin2dec{
+    public int conversor(String bin){
+        int dec = Integer.parseInt(bin,2);
+        
+        return dec;
+    }
+}
+
+class project1 {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        bin2dec bd = new bin2dec();
+        String bin;
+        boolean check = false;
+        int verify = 0;
+        int dec;
+        
+        System.out.println("Type the binary number: "); 
+            String linha = sc.nextLine();
+        
+        if (linha.length() > maxLength) 
+            linha = linha.substring(0, maxLength);
+        
+        bin = linha.substring(0, 8);
+        
+        System.out.print("The number in decimal: " + bd.conversor(bin));
+    }
+}
