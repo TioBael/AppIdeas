@@ -1,4 +1,13 @@
-//Incomplete
+/*
+Exercicio Bin2Dec da lista AppIdeas
+Ele pega um numero que o usuario fornece, verifica na classe bin2dec, com o metodo verifier se é binario, se não for, ele pede para digitar o numero novamente,
+se for binario, ele manda para o metodo conversos, e faz a conversão
+
+Problemas no codigo:
+ele é obrigatorio digitar 8 numeros, se tiver mais, ele faz o certo, que é o trim para 8 digitos e ignora o resto,
+se for menor que 8, ele retorna uma Exception, que não sei resolver.
+*/
+
 import java.util.*;
 
 
@@ -8,26 +17,37 @@ class bin2dec{
         
         return dec;
     }
+  
+    public boolean verifier(String bin){
+            for(int i=0;i!=bin.length();i++){
+             if(bin.charAt(i) != '0')
+                if(bin.charAt(i) != '1')
+                    return false;
+            }
+        return true;
+    }
 }
 
-class project1 {
+public class Main{
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
         bin2dec bd = new bin2dec();
+        
         String bin;
-        boolean check = false;
         int verify = 0;
         int dec;
         
-        System.out.println("Type the binary number: "); 
-            String linha = sc.nextLine();
+        do{
+            System.out.println("\nType the binary number: "); 
+                String linha = sc.nextLine();
+            bin = linha.substring(0, 8);
         
-        if (linha.length() > maxLength) 
-            linha = linha.substring(0, maxLength);
-        
-        bin = linha.substring(0, 8);
-        
-        System.out.print("The number in decimal: " + bd.conversor(bin));
+            if(bd.verifier(bin))
+                System.out.print("The number in decimal: " + bd.conversor(bin));
+            else
+                System.out.printf("\nNumber is not a binary!");
+        }
+        while(!bd.verifier(bin));
     }
 }
